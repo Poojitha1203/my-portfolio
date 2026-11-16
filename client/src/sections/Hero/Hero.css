@@ -1,6 +1,6 @@
 .hero {
   display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 56px; align-items: center;
-  padding: 96px 0 112px;
+  padding: 64px 0 72px;
 }
 
 .hero-hello {
@@ -10,9 +10,7 @@
 .accent-text { color: var(--accent); }
 .hero-intro { max-width: 540px; margin: 0; color: var(--muted); font-size: 17px; line-height: 1.75; }
 .hero-intro strong { color: var(--ink); font-weight: 600; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0 0; padding: 0; list-style: none; }
-.hero-tags li { padding: 6px 12px; border-radius: 8px; background: var(--accent-soft); color: var(--accent-ink); font: 12px var(--font-mono); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
 /* Profile card on the right */
 .hero-card {
@@ -24,9 +22,10 @@
   background: var(--accent) radial-gradient(rgba(255, 255, 255, .14) 1px, transparent 1.5px) 0 0 / 14px 14px;
 }
 .hero-avatar {
-  position: relative; display: grid; place-items: center; width: 92px; height: 92px; margin-top: 36px; border-radius: 26px;
+  position: relative; display: grid; place-items: center; overflow: hidden; width: 92px; height: 92px; margin-top: 36px; border-radius: 26px;
   background: var(--ink); color: #fff; font-size: 32px; font-weight: 700; letter-spacing: -.04em; border: 5px solid var(--surface);
 }
+.hero-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .hero-card-name { margin: 16px 0 2px; font-size: 24px; font-weight: 700; letter-spacing: -.035em; }
 .hero-card-role { margin: 0; font-size: 14px; color: var(--muted); }
 
@@ -40,11 +39,11 @@
 .hero-card-foot { display: flex; align-items: center; gap: 10px; margin: 20px 0 0; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-2); }
 
 @media (max-width: 900px) {
-  .hero { grid-template-columns: minmax(0, 1fr); gap: 44px; padding: 72px 0 88px; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 36px; padding: 48px 0 56px; }
   .hero-card { max-width: 440px; }
 }
 @media (max-width: 600px) {
-  .hero { padding: 52px 0 72px; }
+  .hero { padding: 36px 0 48px; }
   .hero-intro { font-size: 15px; }
   .hero-card { padding: 22px; border-radius: 22px; }
   .hero-card::before { height: 80px; border-radius: 22px 22px 0 0; }

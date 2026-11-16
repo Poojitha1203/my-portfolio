@@ -47,4 +47,38 @@ export const projects: Project[] = [
     isPrivate: true,
     privateNote: 'Code is private (company internal project).',
   },
+  {
+    id: 'portfolio',
+    name: 'Personal Portfolio',
+    context: 'Personal project · Open source',
+    tagline: 'This website: my work, experience and certifications in one place.',
+    description:
+      'A fast, responsive single-page site built with React and TypeScript. Content is kept in typed data files and served from Firestore, and the site is deployed on Firebase Hosting.',
+    featureGroups: [
+      {
+        title: 'Features',
+        items: [
+          'Responsive layout for phone, tablet and desktop',
+          'Internship timeline with certificate previews',
+          'Verified certification cards with expiry dates',
+          'Resume download and contact links',
+        ],
+      },
+      {
+        title: 'How it’s built',
+        items: [
+          'React 19, TypeScript and Vite',
+          'One CSS file per component, shared design tokens',
+          'Firestore with built-in data as a fallback',
+          'One-command deploy to Firebase Hosting',
+        ],
+      },
+    ],
+    stack: ['React', 'TypeScript', 'Vite', 'Firebase', 'Firestore', 'Firebase Hosting'],
+    isPrivate: false,
+    links: [
+      { label: 'Live site', url: 'https://poojitha-portfolio.web.app' },
+      { label: 'Source code', url: 'https://github.com/Poojitha1203/my-portfolio' },
+    ],
+  },
 ];

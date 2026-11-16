@@ -1,7 +1,7 @@
 /* Small pieces reused by several sections and components. */
 
 /* Section wrapper with its numbered label */
-.content-section { padding: 76px 0 88px; border-top: 1px solid var(--line); }
+.content-section { padding: 56px 0 64px; border-top: 1px solid var(--line); }
 .eyebrow {
   display: inline-block; margin: 0; padding: 5px 12px; border-radius: 999px; background: var(--accent-soft);
   font: 12px var(--font-mono); letter-spacing: .08em; color: var(--accent);
@@ -35,7 +35,7 @@
   .btn:hover { transform: none; }
 }
 @media (max-width: 600px) {
-  .content-section { padding: 56px 0 64px; }
+  .content-section { padding: 44px 0 48px; }
   .body-copy { font-size: 15px; }
   .btn { padding: 13px 18px; font-size: 14px; }
 }

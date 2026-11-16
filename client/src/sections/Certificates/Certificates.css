@@ -1,7 +1,7 @@
 /* Timeline: a rail on the left with one marker per internship card */
 .cert-list {
   position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px;
-  list-style: none; margin: 48px 0 0; padding: 0 0 0 44px;
+  list-style: none; margin: 32px 0 0; padding: 0 0 0 44px;
 }
 .cert-item { position: relative; min-width: 0; }
 /* line from each marker down to the next one */
@@ -17,7 +17,7 @@
 .cert-item:hover::before { background: var(--accent); }
 
 /* Skill certifications grid */
-.sub-heading { margin: 64px 0 20px; font: 11px var(--font-mono); letter-spacing: .08em; color: var(--accent); text-transform: uppercase; font-weight: 400; }
+.sub-heading { margin: 44px 0 16px; font: 11px var(--font-mono); letter-spacing: .08em; color: var(--accent); text-transform: uppercase; font-weight: 400; }
 .cred-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; }
 
 @media (max-width: 800px) {
@@ -25,10 +25,10 @@
   .cert-item:not(:last-child)::after { top: 51px; bottom: -64px; }
 }
 @media (max-width: 600px) {
-  .cert-list { padding-left: 26px; gap: 20px; margin-top: 36px; }
+  .cert-list { padding-left: 26px; gap: 20px; margin-top: 24px; }
   .cert-item::before { left: -26px; top: 28px; width: 11px; height: 11px; }
   .cert-item:not(:last-child)::after { left: -21px; top: 39px; bottom: -48px; }
   .cert-item:first-child::before { box-shadow: 0 0 0 4px var(--accent-soft); }
-  .sub-heading { margin-top: 48px; }
+  .sub-heading { margin-top: 36px; }
   .cred-grid { grid-template-columns: minmax(0, 1fr); }
 }

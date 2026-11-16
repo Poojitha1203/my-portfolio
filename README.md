@@ -2,6 +2,8 @@
 
 Personal developer portfolio.
 
+**Live site:** https://poojitha-portfolio.web.app
+
 ## Tech stack
 
 - **Frontend** (`client/`): React 19 + TypeScript, built with Vite
@@ -35,19 +37,21 @@ Other scripts:
 | `npm run build`      | Production build of server and client |
 | `npm run typecheck`  | Type-check both projects             |
 | `npm run seed`       | Upload portfolio data to Firestore   |
+| `npm run deploy`     | Build the site and publish it live   |
 
 Server settings are read from `server/.env` (see `server/.env.example`).
 
 ## Portfolio data and Firebase
 
-All content (certificates, education, skill certifications, profile links) lives in `client/src/data/`.
+All content (certificates, education, skill certifications, projects, profile links) lives in `client/src/data/`.
+Name, menu, skills and the profile photo are set in `client/src/data/profile.ts`.
 The site shows this built-in data straight away, and if Firebase is configured it loads the same
 collections from Firestore instead. Without Firebase the site works exactly the same.
 
 ### Firebase project
 
 - Project: **`poojitha-portfolio`** ([console](https://console.firebase.google.com/project/poojitha-portfolio/overview)), Firestore in `asia-south1` (Mumbai), free Spark plan.
-- Collections: `certificates`, `credentials`, `education`, `links`. Anyone can read them and nobody can write from the browser (`firestore.rules`).
+- Collections: `certificates`, `credentials`, `education`, `links`, `projects`. Anyone can read them and nobody can write from the browser (`firestore.rules`).
 - `.firebaserc` points the Firebase CLI at this project.
 
 ### Local setup on a new machine
@@ -65,3 +69,19 @@ After changing `firestore.rules`, publish it with `firebase deploy --only firest
 ### Updating content
 
 Edit the files in `client/src/data/`, then run `npm run seed` to update Firestore.
+
+## Deploying
+
+The site is hosted on Firebase Hosting (free) at https://poojitha-portfolio.web.app.
+
+```sh
+npm run deploy   # builds client/ and publishes client/dist
+```
+
+`client/.env` must be present when you deploy, so the live site can read from Firestore.
+If you changed anything in `client/src/data/`, run `npm run seed` as well.
+
+### Profile photo
+
+Put the image in `client/public/` (for example `client/public/profile.jpg`), set
+`photoUrl: '/profile.jpg'` in `client/src/data/profile.ts`, then deploy. A square photo works best.

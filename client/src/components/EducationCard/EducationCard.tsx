@@ -15,16 +15,24 @@ function EducationCard({ item }: Props) {
       </span>
 
       <div className="edu-body">
-        <p className="edu-years">
-          <time dateTime={String(item.startYear)}>{item.startYear}</time>
-          {' – '}
-          <time dateTime={String(item.endYear)}>{item.endYear}</time>
-        </p>
+        <div className="edu-tags">
+          <p className="edu-years">
+            {item.startYear && (
+              <>
+                <time dateTime={String(item.startYear)}>{item.startYear}</time>
+                {' – '}
+              </>
+            )}
+            <time dateTime={String(item.endYear)}>{item.endYear}</time>
+          </p>
+          {item.score && <p className="edu-score">{item.score}</p>}
+        </div>
         <h3 className="edu-degree">
-          {item.degree}, {item.field}
+          {item.degree}
+          {item.field && `, ${item.field}`}
         </h3>
-        <p className="edu-institution">{item.institution}</p>
-        <p className="edu-location">{item.location}</p>
+        {item.institution && <p className="edu-institution">{item.institution}</p>}
+        {item.location && <p className="edu-location">{item.location}</p>}
         {item.note && <p className="edu-note">{item.note}</p>}
       </div>
     </article>
