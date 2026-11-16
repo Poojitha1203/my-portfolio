@@ -1,9 +1,21 @@
 import CertificateCard from './components/CertificateCard';
-import { certificates } from './data/certificates';
+import ContactLinks from './components/ContactLinks';
+import CredentialCard from './components/CredentialCard';
+import EducationCard from './components/EducationCard';
+import { certificates as localCertificates, type Certificate } from './data/certificates';
+import { credentials as localCredentials, type Credential } from './data/credentials';
+import { education as localEducation, type Education } from './data/education';
+import { links as localLinks, type ProfileLink } from './data/links';
+import { useCollection } from './hooks/useCollection';
 
-const sections = ['About', 'Projects', 'Certificates', 'Contact'];
+const sections = ['About', 'Education', 'Projects', 'Certificates', 'Contact'];
 
 function App() {
+  const certificates = useCollection<Certificate>('certificates', localCertificates);
+  const credentials = useCollection<Credential>('credentials', localCredentials);
+  const education = useCollection<Education>('education', localEducation);
+  const links = useCollection<ProfileLink>('links', localLinks);
+
   return (
     <main className="page-shell">
       <header className="site-header">
@@ -28,14 +40,24 @@ function App() {
         <p className="body-copy">I care about clear interfaces, dependable software, and the details that make a product feel right. More about my background and interests will be added here.</p>
       </section>
 
+      <section className="content-section" id="education">
+        <p className="eyebrow">02 / EDUCATION</p>
+        <h2>Where I studied</h2>
+        <div className="edu-list">
+          {education.map((item) => (
+            <EducationCard key={item.id} item={item} />
+          ))}
+        </div>
+      </section>
+
       <section className="content-section" id="projects">
-        <p className="eyebrow">02 / SELECTED WORK</p>
+        <p className="eyebrow">03 / SELECTED WORK</p>
         <h2>Projects</h2>
         <p className="body-copy">A few things I’ve built will live here. Check back soon.</p>
       </section>
 
       <section className="content-section" id="certificates">
-        <p className="eyebrow">03 / CERTIFICATES</p>
+        <p className="eyebrow">04 / CERTIFICATES</p>
         <h2>Experience &amp; credentials</h2>
         <p className="body-copy">Internships and certifications that shaped how I build software.</p>
         <ol className="cert-list">
@@ -45,12 +67,24 @@ function App() {
             </li>
           ))}
         </ol>
+
+        {credentials.length > 0 && (
+          <div className="cred-block">
+            <h3 className="sub-heading">Skill certifications</h3>
+            <div className="cred-grid">
+              {credentials.map((credential) => (
+                <CredentialCard key={credential.id} credential={credential} />
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       <footer className="content-section footer" id="contact">
-        <p className="eyebrow">04 / CONTACT</p>
+        <p className="eyebrow">05 / CONTACT</p>
         <h2>Let’s make something useful.</h2>
-        <p className="body-copy">Add your email and social links here when you’re ready.</p>
+        <p className="body-copy">Open to opportunities and collaborations. Email me, or find me on these platforms.</p>
+        <ContactLinks links={links} />
       </footer>
     </main>
   );
