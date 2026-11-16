@@ -3,14 +3,17 @@
 export const profile = {
   name: 'Poojitha B',
   initials: 'PB',
+  // Profile photo (DP). Put the image in client/public/ and set its path here, e.g. '/profile.jpg'.
+  // Leave it empty to show the initials instead.
+  photoUrl: '/profile.jpg',
+  // Website copy of the resume (phone number removed). Lives in client/public/.
+  resumeUrl: '/Poojitha-B-Resume.pdf',
   role: 'Software Developer',
   education: 'B.Tech CSE, RGUKT',
   openToWork: true,
 };
 
 export const navSections = ['About', 'Education', 'Projects', 'Certificates', 'Contact'];
-
-export const heroTags = ['React', 'TypeScript', 'Node.js', 'Firebase', 'React Native', 'Stripe'];
 
 export type SkillGroup = { title: string; items: string[] };
 

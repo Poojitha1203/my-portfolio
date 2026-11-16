@@ -1,4 +1,4 @@
-import { heroTags, profile } from '../../data/profile';
+import { profile } from '../../data/profile';
 import './Hero.css';
 
 type Props = {
@@ -13,7 +13,7 @@ function Hero({ internshipCount, certificationCount, projectCount }: Props) {
       <div className="hero-text">
         <p className="hero-hello">
           <span className="status-dot" aria-hidden="true" />
-          Hi, I’m {profile.name} · {profile.role}
+          Hi, I’m {profile.name}
         </p>
         <h1>
           I build apps people <span className="accent-text">enjoy using.</span>
@@ -25,17 +25,20 @@ function Hero({ internshipCount, certificationCount, projectCount }: Props) {
         </p>
         <div className="hero-actions">
           <a className="btn btn-primary" href="#projects">View my work <span aria-hidden="true">→</span></a>
-          <a className="btn btn-ghost" href="#contact">Get in touch</a>
+          <a className="btn btn-ghost" href={profile.resumeUrl} download="Poojitha-B-Resume.pdf">
+            Download resume <span aria-hidden="true">↓</span>
+          </a>
         </div>
-        <ul className="hero-tags" aria-label="Main skills">
-          {heroTags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
       </div>
 
       <aside className="hero-card" aria-label="Profile summary">
-        <div className="hero-avatar" aria-hidden="true">{profile.initials}</div>
+        <div className="hero-avatar">
+          {profile.photoUrl ? (
+            <img src={profile.photoUrl} alt={profile.name} width={92} height={92} />
+          ) : (
+            <span aria-hidden="true">{profile.initials}</span>
+          )}
+        </div>
         <p className="hero-card-name">{profile.name}</p>
         <p className="hero-card-role">{profile.role} · {profile.education}</p>
         <dl className="hero-stats">
