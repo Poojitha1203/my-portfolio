@@ -38,11 +38,13 @@ function App() {
         <p className="eyebrow">03 / CERTIFICATES</p>
         <h2>Experience &amp; credentials</h2>
         <p className="body-copy">Internships and certifications that shaped how I build software.</p>
-        <div className="cert-list">
+        <ol className="cert-list">
           {certificates.map((certificate) => (
-            <CertificateCard key={certificate.id} certificate={certificate} />
+            <li key={certificate.id} className="cert-item">
+              <CertificateCard certificate={certificate} />
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       <footer className="content-section footer" id="contact">
