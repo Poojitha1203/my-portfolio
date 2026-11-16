@@ -12,7 +12,8 @@
     "dev:server": "npm run dev -w server",
     "build": "npm run build -w server && npm run build -w client",
     "typecheck": "npm run typecheck -w server && npm run typecheck -w client",
-    "seed": "npm run seed -w server"
+    "seed": "npm run seed -w server",
+    "deploy": "npm run build -w client && firebase deploy --only hosting"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
