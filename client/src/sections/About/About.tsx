@@ -9,11 +9,9 @@ function About() {
       <div className="about-grid">
         <div>
           <p className="body-copy">
-            I’m a Computer Science graduate from RGUKT RK Valley. I enjoy working on the whole product: clean
-            interfaces in React, the APIs and Cloud Functions behind them, and getting payments right.
-          </p>
-          <p className="body-copy">
-            I care about clear code, dependable software and the small details that make an app feel good to use.
+            I enjoy working on the whole product: clean interfaces in React, the APIs and Cloud Functions behind
+            them, and getting payments right. I care about clear code and the small details that make an app feel
+            good to use.
           </p>
         </div>
         <div className="skill-groups">
