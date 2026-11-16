@@ -24,8 +24,8 @@ export const certificates: Certificate[] = [
     endDate: '2024-09-30',
     issuedOn: '2024-10-03',
     summary:
-      'Completed an internship at HITLOOP, working across full stack web development and mobile application development.',
-    skills: ['Full Stack Web Development', 'Mobile App Development'],
+      'Redesigned the website landing page, built reusable React components and improved page load times through refactoring.',
+    skills: ['React', 'Full Stack Web Development', 'Mobile App Development'],
     documentUrl: '/certificates/hitloop-internship.pdf',
     previewUrl: '/certificates/hitloop-internship.png',
   },
@@ -40,5 +40,17 @@ export const certificates: Certificate[] = [
       'Selected for a remote internship after a phone interview, and briefly worked on web design and development tasks.',
     skills: ['HTML', 'CSS', 'Bootstrap', 'JavaScript'],
     accentColors: ['#e8402c', '#f5a524'],
+  },
+  {
+    id: 'unified-mentor-internship',
+    title: 'Web Developer Intern',
+    issuer: 'Unified Mentor',
+    issuerType: 'Remote',
+    startDate: '2024-04-01',
+    endDate: '2024-06-30',
+    summary:
+      'Built and maintained two web applications in a team of eight, adding new features and reviewing code with Git.',
+    skills: ['React', 'JavaScript', 'HTML', 'CSS', 'Git'],
+    accentColors: ['#334e68', '#627d98'],
   },
 ];
