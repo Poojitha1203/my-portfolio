@@ -1,0 +1,12 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Portfolio content is public to read. Only the seed script (Admin SDK) writes,
+    // and the Admin SDK bypasses these rules.
+    match /{collection}/{docId} {
+      allow read: if collection in ['certificates', 'credentials', 'education', 'links'];
+      allow write: if false;
+    }
+  }
+}
