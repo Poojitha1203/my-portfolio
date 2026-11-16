@@ -17,14 +17,19 @@ type Props = { certificate: Certificate };
 
 function CertificateCard({ certificate }: Props) {
   const start = parseDate(certificate.startDate);
-  const end = parseDate(certificate.endDate);
-  const issued = parseDate(certificate.issuedOn);
+  const end = certificate.endDate ? parseDate(certificate.endDate) : undefined;
+  const { documentUrl, previewUrl, accentColors, issuedOn } = certificate;
+  const monogramStyle = accentColors
+    ? { background: `linear-gradient(135deg, ${accentColors[0]}, ${accentColors[1]})` }
+    : undefined;
 
   return (
-    <article className="cert-card">
+    <article className={previewUrl ? 'cert-card' : 'cert-card cert-card--plain'}>
       <div className="cert-body">
         <div className="cert-issuer">
-          <span className="cert-monogram" aria-hidden="true">{certificate.issuer.charAt(0)}</span>
+          <span className="cert-monogram" style={monogramStyle} aria-hidden="true">
+            {certificate.issuer.charAt(0)}
+          </span>
           <div>
             <p className="cert-issuer-name">{certificate.issuer}</p>
             <p className="cert-issuer-type">{certificate.issuerType} · Internship</p>
@@ -35,18 +40,26 @@ function CertificateCard({ certificate }: Props) {
 
         <dl className="cert-meta">
           <div>
-            <dt>Duration</dt>
+            <dt>{end || certificate.durationNote ? 'Duration' : 'Started'}</dt>
             <dd>
               <time dateTime={certificate.startDate}>{monthYear.format(start)}</time>
-              {' – '}
-              <time dateTime={certificate.endDate}>{monthYear.format(end)}</time>
-              <span className="cert-pill">{durationLabel(start, end)}</span>
+              {end && (
+                <>
+                  {' – '}
+                  <time dateTime={certificate.endDate}>{monthYear.format(end)}</time>
+                </>
+              )}
+              {(end || certificate.durationNote) && (
+                <span className="cert-pill">{end ? durationLabel(start, end) : certificate.durationNote}</span>
+              )}
             </dd>
           </div>
-          <div>
-            <dt>Issued</dt>
-            <dd><time dateTime={certificate.issuedOn}>{fullDate.format(issued)}</time></dd>
-          </div>
+          {issuedOn && (
+            <div>
+              <dt>Issued</dt>
+              <dd><time dateTime={issuedOn}>{fullDate.format(parseDate(issuedOn))}</time></dd>
+            </div>
+          )}
         </dl>
 
         <p className="cert-summary">{certificate.summary}</p>
@@ -57,27 +70,31 @@ function CertificateCard({ certificate }: Props) {
           ))}
         </ul>
 
-        <a className="cert-link" href={certificate.documentUrl} target="_blank" rel="noopener noreferrer">
-          View certificate <span aria-hidden="true">↗</span>
-        </a>
+        {documentUrl && (
+          <a className="cert-link" href={documentUrl} target="_blank" rel="noopener noreferrer">
+            View certificate <span aria-hidden="true">↗</span>
+          </a>
+        )}
       </div>
 
-      <a
-        className="cert-preview"
-        href={certificate.documentUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Open ${certificate.issuer} certificate (PDF)`}
-      >
-        <img
-          src={certificate.previewUrl}
-          alt={`${certificate.issuer} internship completion certificate`}
-          loading="lazy"
-          width={695}
-          height={900}
-        />
-        <span className="cert-preview-tag">PDF</span>
-      </a>
+      {previewUrl && (
+        <a
+          className="cert-preview"
+          href={documentUrl ?? previewUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${certificate.issuer} certificate`}
+        >
+          <img
+            src={previewUrl}
+            alt={`${certificate.issuer} internship completion certificate`}
+            loading="lazy"
+            width={695}
+            height={900}
+          />
+          {documentUrl?.endsWith('.pdf') && <span className="cert-preview-tag">PDF</span>}
+        </a>
+      )}
     </article>
   );
 }
