@@ -147,3 +147,9 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Firebase
+*service-account*.json
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
