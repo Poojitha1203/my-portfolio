@@ -1,0 +1,20 @@
+.edu-card {
+  display: flex; gap: 24px; align-items: flex-start; padding: 32px 36px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+}
+.edu-mark {
+  flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px;
+  background: var(--accent-soft); color: var(--accent-ink);
+}
+.edu-body { min-width: 0; }
+.edu-body p { margin: 0; }
+.edu-years { display: inline-block; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); font-size: 12px; font-weight: 500; }
+.edu-degree { margin: 14px 0 6px; font-size: clamp(22px, 3vw, 28px); font-weight: 500; letter-spacing: -.035em; line-height: 1.2; }
+.edu-institution { font-size: 16px; font-weight: 500; color: var(--ink-2); }
+.edu-location { margin-top: 2px !important; font-size: 14px; color: var(--soft); }
+.edu-note { margin-top: 14px !important; font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+@media (max-width: 600px) {
+  .edu-card { flex-direction: column; gap: 18px; padding: 22px 20px; border-radius: 16px; }
+  .edu-mark { width: 44px; height: 44px; border-radius: 12px; }
+}

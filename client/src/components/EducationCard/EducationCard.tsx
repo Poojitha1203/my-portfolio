@@ -1,4 +1,5 @@
-import type { Education } from '../data/education';
+import type { Education } from '../../data/education';
+import './EducationCard.css';
 
 type Props = { item: Education };
 

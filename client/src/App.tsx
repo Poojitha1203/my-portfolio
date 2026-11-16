@@ -1,8 +1,8 @@
-import CertificateCard from './components/CertificateCard';
-import ContactLinks from './components/ContactLinks';
-import CredentialCard from './components/CredentialCard';
-import EducationCard from './components/EducationCard';
-import ProjectCard from './components/ProjectCard';
+import CertificateCard from './components/CertificateCard/CertificateCard';
+import ContactLinks from './components/ContactLinks/ContactLinks';
+import CredentialCard from './components/CredentialCard/CredentialCard';
+import EducationCard from './components/EducationCard/EducationCard';
+import ProjectCard from './components/ProjectCard/ProjectCard';
 import { certificates as localCertificates, type Certificate } from './data/certificates';
 import { credentials as localCredentials, type Credential } from './data/credentials';
 import { education as localEducation, type Education } from './data/education';
