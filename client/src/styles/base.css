@@ -1,5 +1,6 @@
 /* Reset and page-level defaults. */
 :root {
+  font-feature-settings: "cv11", "ss01";
   font-family: var(--font-sans);
   color: var(--ink);
   background: var(--bg);
@@ -19,8 +20,11 @@ a { color: inherit; text-decoration: none; }
 
 .page-shell { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
 
-h1 { margin: 26px 0 22px; font-size: clamp(42px, 6vw, 66px); line-height: 1.04; letter-spacing: -.04em; font-weight: 600; }
-h2 { margin: 14px 0; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.035em; font-weight: 600; }
+h1, h2, h3, h4,
+.cred-name, .hero-card-name, .wordmark-name, .contact-email { font-family: var(--font-heading); }
+
+h1 { margin: 26px 0 22px; font-size: clamp(36px, 6vw, 66px); line-height: 1.04; letter-spacing: -.035em; font-weight: 700; }
+h2 { margin: 14px 0; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.03em; font-weight: 700; }
 
 @media (max-width: 600px) {
   .page-shell { padding: 0 22px; }
