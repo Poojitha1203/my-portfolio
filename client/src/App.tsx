@@ -2,10 +2,12 @@ import CertificateCard from './components/CertificateCard';
 import ContactLinks from './components/ContactLinks';
 import CredentialCard from './components/CredentialCard';
 import EducationCard from './components/EducationCard';
+import ProjectCard from './components/ProjectCard';
 import { certificates as localCertificates, type Certificate } from './data/certificates';
 import { credentials as localCredentials, type Credential } from './data/credentials';
 import { education as localEducation, type Education } from './data/education';
 import { links as localLinks, type ProfileLink } from './data/links';
+import { projects as localProjects, type Project } from './data/projects';
 import { useCollection } from './hooks/useCollection';
 
 const sections = ['About', 'Education', 'Projects', 'Certificates', 'Contact'];
@@ -15,6 +17,7 @@ function App() {
   const credentials = useCollection<Credential>('credentials', localCredentials);
   const education = useCollection<Education>('education', localEducation);
   const links = useCollection<ProfileLink>('links', localLinks);
+  const projects = useCollection<Project>('projects', localProjects);
 
   return (
     <main className="page-shell">
@@ -53,7 +56,12 @@ function App() {
       <section className="content-section" id="projects">
         <p className="eyebrow">03 / SELECTED WORK</p>
         <h2>Projects</h2>
-        <p className="body-copy">A few things I’ve built will live here. Check back soon.</p>
+        <p className="body-copy">Things I’ve built, from real products used every day to side projects.</p>
+        <div className="project-list">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </section>
 
       <section className="content-section" id="certificates">

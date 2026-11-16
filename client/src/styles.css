@@ -145,7 +145,7 @@ h2 { margin: 17px 0; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.055em;
 .edu-note { margin-top: 14px !important; font-size: 14px; color: #686963; line-height: 1.6; }
 
 /* Skill certifications */
-.cred-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.cred-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; }
 .cred-card {
   display: flex; flex-direction: column; gap: 18px; padding: 22px 24px; min-height: 160px;
   background: #fdfdfa; border: 1px solid #deded6; border-radius: 16px;
@@ -156,6 +156,7 @@ h2 { margin: 17px 0; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.055em;
 .cred-issuer { font: 11px 'DM Mono', monospace; letter-spacing: .06em; color: #77764d; text-transform: uppercase; }
 .cred-verified { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 999px; background: #e3f1e6; color: #2f6b3d; font-size: 11px; font-weight: 600; }
 .cred-name { font-size: 26px; font-weight: 500; letter-spacing: -.04em; }
+.cred-expiry { margin-top: -10px; font-size: 12px; color: #868780; }
 .cred-bottom { margin-top: auto; }
 .cred-level { font-size: 13px; color: #686963; }
 .cred-arrow { font-size: 14px; transition: transform .2s ease; }
@@ -210,4 +211,48 @@ h2 { margin: 17px 0; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.055em;
   .cred-grid, .profile-grid { grid-template-columns: minmax(0, 1fr); }
   .cred-card { min-height: 0; }
   .profile-grid { margin-top: 32px; }
+}
+
+/* Projects */
+.project-list { display: grid; gap: 24px; margin-top: 44px; }
+.project-card {
+  position: relative; overflow: hidden; padding: 44px; min-width: 0;
+  background: #fdfdfa; border: 1px solid #deded6; border-radius: 24px;
+}
+.project-card::before {
+  content: ''; position: absolute; inset: 0 0 auto 0; height: 4px;
+  background: linear-gradient(90deg, #77764d, #c9b46a 60%, #e0d7a8);
+}
+.project-head p { margin: 0; }
+.project-context { font: 11px 'DM Mono', monospace; letter-spacing: .08em; color: #77764d; text-transform: uppercase; }
+.project-name { margin: 14px 0 8px; font-size: clamp(32px, 5vw, 48px); font-weight: 500; letter-spacing: -.055em; line-height: 1.05; }
+.project-tagline { font-size: 18px; color: #44453f; }
+.project-description { max-width: 680px; margin: 22px 0 0; color: #686963; font-size: 16px; line-height: 1.7; }
+.project-role { max-width: 680px; margin: 18px 0 0; padding: 14px 18px; border-radius: 12px; background: #f3f2ea; font-size: 14px; line-height: 1.6; color: #44453f; }
+.project-role span { display: block; margin-bottom: 2px; font: 10px 'DM Mono', monospace; letter-spacing: .08em; color: #77764d; text-transform: uppercase; }
+.project-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 30px; }
+.project-feature-group { padding: 22px 24px; border: 1px solid #e6e6de; border-radius: 16px; background: #f9f9f4; }
+.project-feature-group h4 { margin: 0 0 14px; font-size: 14px; font-weight: 600; }
+.project-feature-group ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.project-feature-group li { position: relative; padding-left: 24px; font-size: 14px; line-height: 1.5; color: #55564f; }
+.project-feature-group li::before {
+  content: ''; position: absolute; left: 0; top: 3px; width: 14px; height: 14px; border-radius: 50%;
+  background: #ecebdf url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.5 7 11l4.5-5.5' fill='none' stroke='%235e5d3c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 10px no-repeat;
+}
+.project-stack { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; padding: 0; list-style: none; }
+.project-stack li { padding: 6px 12px; border-radius: 8px; background: #20211f; color: #f7f7f2; font: 12px 'DM Mono', monospace; }
+.project-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 28px; padding-top: 22px; border-top: 1px solid #e6e6de; }
+.project-foot .cert-link { margin-top: 0; }
+.project-private { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #77764d; }
+
+@media (max-width: 800px) {
+  .project-card { padding: 32px 28px; }
+  .project-features { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .project-card { padding: 26px 20px; border-radius: 18px; }
+  .project-tagline { font-size: 16px; }
+  .project-description { font-size: 15px; }
+  .project-feature-group { padding: 18px; }
+  .project-stack li { font-size: 11px; padding: 5px 10px; }
 }
