@@ -85,3 +85,13 @@ If you changed anything in `client/src/data/`, run `npm run seed` as well.
 
 Put the image in `client/public/` (for example `client/public/profile.jpg`), set
 `photoUrl: '/profile.jpg'` in `client/src/data/profile.ts`, then deploy. A square photo works best.
+
+## Security
+
+- **Firestore**: visitors can only read the portfolio collections. Nobody can write from the browser (`firestore.rules`).
+- **Hosting headers** (`firebase.json`): Content Security Policy, no framing, `nosniff`, strict referrer and permissions policies. HTTPS is enforced by Firebase.
+- **Unknown pages** return a real 404 (`client/public/404.html`).
+- **Firebase web API key** is restricted in Google Cloud to Firestore only, and only from
+  `poojitha-portfolio.web.app`, `poojitha-portfolio.firebaseapp.com` and `localhost:5173` / `localhost:4173`.
+  If you add a custom domain, add it under APIs & Services → Credentials → Browser key → Website restrictions.
+- **No login** is needed: all content is public and is edited in code, not in the browser.
