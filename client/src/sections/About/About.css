@@ -1,0 +1,11 @@
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.about-grid .body-copy { margin: 0 0 16px; }
+
+.skill-groups { display: grid; gap: 18px; }
+.skill-group h3 { margin: 0 0 10px; font: 11px var(--font-mono); letter-spacing: .08em; color: var(--soft); text-transform: uppercase; font-weight: 400; }
+.skill-group ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.skill-group li { padding: 7px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 13px; font-weight: 500; color: var(--ink-2); }
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
