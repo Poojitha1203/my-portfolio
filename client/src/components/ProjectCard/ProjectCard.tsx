@@ -1,4 +1,5 @@
-import type { Project } from '../data/projects';
+import type { Project } from '../../data/projects';
+import './ProjectCard.css';
 
 type Props = { project: Project };
 
@@ -49,7 +50,7 @@ function ProjectCard({ project }: Props) {
           </span>
         )}
         {project.links?.map((link) => (
-          <a key={link.url} className="cert-link" href={link.url} target="_blank" rel="noopener noreferrer">
+          <a key={link.url} className="underline-link" href={link.url} target="_blank" rel="noopener noreferrer">
             {link.label} <span aria-hidden="true">↗</span>
           </a>
         ))}

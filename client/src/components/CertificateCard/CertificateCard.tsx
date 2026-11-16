@@ -1,4 +1,5 @@
-import type { Certificate } from '../data/certificates';
+import type { Certificate } from '../../data/certificates';
+import './CertificateCard.css';
 
 const monthYear = new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' });
 const fullDate = new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -71,7 +72,7 @@ function CertificateCard({ certificate }: Props) {
         </ul>
 
         {documentUrl && (
-          <a className="cert-link" href={documentUrl} target="_blank" rel="noopener noreferrer">
+          <a className="underline-link" href={documentUrl} target="_blank" rel="noopener noreferrer">
             View certificate <span aria-hidden="true">↗</span>
           </a>
         )}

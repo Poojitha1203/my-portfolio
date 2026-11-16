@@ -1,4 +1,5 @@
-import type { Credential } from '../data/credentials';
+import type { Credential } from '../../data/credentials';
+import './CredentialCard.css';
 
 const monthYear = new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' });
 

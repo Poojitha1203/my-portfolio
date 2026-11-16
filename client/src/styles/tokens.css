@@ -1,0 +1,21 @@
+/* Design tokens: colors and fonts used across the whole site. */
+:root {
+  --bg: #f8f6f1;
+  --surface: #ffffff;
+  --tint: #f3f0e8;
+  --ink: #1c2321;
+  --ink-2: #36403d;
+  --muted: #5c6662;
+  --soft: #8b938f;
+  --line: #e6e1d6;
+  --line-strong: #cfc7b6;
+  --accent: #0f766e;
+  --accent-ink: #0b5a54;
+  --accent-soft: #e2f0ec;
+  --highlight: #c8602e;
+  --success: #22c55e;
+  --shadow-color: 28, 35, 33;
+
+  --font-sans: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}

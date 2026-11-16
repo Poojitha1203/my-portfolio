@@ -1,4 +1,5 @@
-import type { ProfileLink } from '../data/links';
+import type { ProfileLink } from '../../data/links';
+import './ContactLinks.css';
 
 const marks: Record<ProfileLink['kind'], string> = {
   email: '@',
