@@ -9,7 +9,7 @@ function Projects({ projects }: Props) {
     <section className="content-section" id="projects">
       <p className="eyebrow">03 / SELECTED WORK</p>
       <h2>Projects</h2>
-      <p className="body-copy">Things I’ve built, from real products used every day to side projects.</p>
+      <p className="body-copy">Work and personal projects I’ve built.</p>
       <div className="project-list">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
