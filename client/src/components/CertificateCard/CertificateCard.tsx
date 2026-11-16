@@ -1,25 +1,11 @@
 import type { Certificate } from '../../data/certificates';
+import { durationLabel, formatFullDate, formatMonthYear } from '../../lib/dates';
 import './CertificateCard.css';
-
-const monthYear = new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' });
-const fullDate = new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric' });
-
-function parseDate(iso: string) {
-  const [year, month, day] = iso.split('-').map(Number);
-  return new Date(year, month - 1, day);
-}
-
-function durationLabel(start: Date, end: Date) {
-  const weeks = Math.round((end.getTime() - start.getTime()) / (7 * 24 * 60 * 60 * 1000));
-  return weeks >= 8 ? `${Math.round(weeks / 4.345)} months` : `${weeks} weeks`;
-}
 
 type Props = { certificate: Certificate };
 
 function CertificateCard({ certificate }: Props) {
-  const start = parseDate(certificate.startDate);
-  const end = certificate.endDate ? parseDate(certificate.endDate) : undefined;
-  const { documentUrl, previewUrl, accentColors, issuedOn } = certificate;
+  const { startDate, endDate, documentUrl, previewUrl, accentColors, issuedOn } = certificate;
   const monogramStyle = accentColors
     ? { background: `linear-gradient(135deg, ${accentColors[0]}, ${accentColors[1]})` }
     : undefined;
@@ -41,24 +27,24 @@ function CertificateCard({ certificate }: Props) {
 
         <dl className="cert-meta">
           <div>
-            <dt>{end || certificate.durationNote ? 'Duration' : 'Started'}</dt>
+            <dt>{endDate || certificate.durationNote ? 'Duration' : 'Started'}</dt>
             <dd>
-              <time dateTime={certificate.startDate}>{monthYear.format(start)}</time>
-              {end && (
+              <time dateTime={startDate}>{formatMonthYear(startDate)}</time>
+              {endDate && (
                 <>
                   {' – '}
-                  <time dateTime={certificate.endDate}>{monthYear.format(end)}</time>
+                  <time dateTime={endDate}>{formatMonthYear(endDate)}</time>
                 </>
               )}
-              {(end || certificate.durationNote) && (
-                <span className="cert-pill">{end ? durationLabel(start, end) : certificate.durationNote}</span>
+              {(endDate || certificate.durationNote) && (
+                <span className="cert-pill">{endDate ? durationLabel(startDate, endDate) : certificate.durationNote}</span>
               )}
             </dd>
           </div>
           {issuedOn && (
             <div>
               <dt>Issued</dt>
-              <dd><time dateTime={issuedOn}>{fullDate.format(parseDate(issuedOn))}</time></dd>
+              <dd><time dateTime={issuedOn}>{formatFullDate(issuedOn)}</time></dd>
             </div>
           )}
         </dl>

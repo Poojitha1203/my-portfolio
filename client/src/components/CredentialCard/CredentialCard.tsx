@@ -1,12 +1,6 @@
 import type { Credential } from '../../data/credentials';
+import { formatMonthYear } from '../../lib/dates';
 import './CredentialCard.css';
-
-const monthYear = new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' });
-
-function formatIssued(iso: string) {
-  const [year, month] = iso.split('-').map(Number);
-  return monthYear.format(new Date(year, month - 1, 1));
-}
 
 type Props = { credential: Credential };
 
@@ -27,7 +21,7 @@ function CredentialCard({ credential }: Props) {
       <span className="cred-name">{credential.name}</span>
       {credential.expiresOn && (
         <span className="cred-expiry">
-          Valid until <time dateTime={credential.expiresOn}>{formatIssued(credential.expiresOn)}</time>
+          Valid until <time dateTime={credential.expiresOn}>{formatMonthYear(credential.expiresOn)}</time>
         </span>
       )}
       <span className="cred-bottom">
@@ -36,7 +30,7 @@ function CredentialCard({ credential }: Props) {
           {credential.issuedOn && (
             <>
               {' · '}
-              <time dateTime={credential.issuedOn}>{formatIssued(credential.issuedOn)}</time>
+              <time dateTime={credential.issuedOn}>{formatMonthYear(credential.issuedOn)}</time>
             </>
           )}
         </span>
